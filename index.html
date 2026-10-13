@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bambang HRMIS</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<section id="login" class="card narrow">
+  <h1>Bambang HRMIS</h1>
+  <p class="muted">Travel Orders · Leave · Pass Slips</p>
+  <form id="loginForm">
+    <label>Username <input name="username" autocomplete="username" required></label>
+    <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+    <button class="primary">Log in</button>
+    <p id="loginErr" class="err" role="alert"></p>
+  </form>
+</section>
+
+<div id="app" hidden>
+  <header class="bar"><b>Bambang HRMIS</b><span id="who"></span><button id="logout">Log out</button></header>
+  <main class="card">
+    <div class="head"><h2>Travel orders</h2><button class="primary" id="newBtn">New travel order</button></div>
+    <div class="scroll"><table>
+      <thead><tr><th>T.O. No.</th><th>Version</th><th>Travelers</th><th>Destination</th><th>Dates</th><th>Status</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+  </main>
+</div>
+
+<dialog id="newDlg"><form id="newForm" method="dialog">
+  <h3>New travel order</h3>
+  <label>Version <select name="version"><option value="executive">Executive (Mayor)</option><option value="sb">Sangguniang Bayan (Vice Mayor recommends)</option></select></label>
+  <label>Destination <input name="destination" required></label>
+  <div class="two"><label>From <input type="date" name="date_from" required></label><label>To <input type="date" name="date_to" required></label></div>
+  <label>Purpose <textarea name="purpose" rows="2" required></textarea></label>
+  <label>Travelers <small class="muted">(Ctrl or Cmd + click for several)</small><select name="travelers" id="trav" multiple size="6"></select></label>
+  <p id="newErr" class="err" role="alert"></p>
+  <div class="actions"><button type="button" id="newCancel">Cancel</button><button class="primary">File order</button></div>
+</form></dialog>
+
+<dialog id="dlg"><div id="detail"></div><div class="actions"><button id="dlgClose">Close</button></div></dialog>
+<div id="printArea"></div>
+<script src="app.js"></script>
+</body>
+</html>
